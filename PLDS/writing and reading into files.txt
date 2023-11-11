@@ -1,0 +1,44 @@
+To write (create) a file .......... w means write
+int main()
+{
+    FILE * fpointer = fopen("employeesInfo.txt", "w");
+
+    fclose(fpointer);
+
+    return 0;
+}
+
+
+to write text into a file .. 
+int main()
+{
+    FILE * fpointer = fopen("employeesInfo.txt", "w");
+    fprintf(fpointer, "Happy Chukwuma, CTO\nAbigail Alli, BDM\nEloka Chiejina, DevOps Engineer\n");
+    fclose(fpointer);
+
+    return 0;
+}
+
+to modify a file "a" means append
+int main()
+{
+    FILE * fpointer = fopen("employeesInfo.txt", "a");
+    fprintf(fpointer, "\nFelix Chukwuma, CEO\nAbigail Chukwuma, GM\n");
+    fclose(fpointer);
+
+    return 0;
+}
+
+to read file "r"; r means to read
+int main()
+{
+    char line[255];
+    FILE * fpointer = fopen("employeesInfo.txt", "r");
+    fgets(line, 255, fpointer);
+    fgets(line, 255, fpointer); 
+    printf("%s", line);
+
+    fclose(fpointer);
+
+    return 0;
+}
