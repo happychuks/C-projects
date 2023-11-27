@@ -8,7 +8,7 @@ int main(void) {
     
     scanf("%d", &N);
     totalSum = sumOfDigits(N);
-    printf("%d", totalSum);
+    printf("%d\n", totalSum);
     
     return 0;
 }
