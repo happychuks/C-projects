@@ -42,6 +42,7 @@ void printPoints(struct point * start) {
 //this function add new point to the end of the list
 struct point * append(struct point *end, struct point *newptr) {
     end->next = newptr;
+    end = newptr;
 
-    return (end->next);
+    return (newptr);
 }
