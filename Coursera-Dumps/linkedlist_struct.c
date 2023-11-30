@@ -13,7 +13,7 @@ int main(void) {
     struct point * start, * ptr;
 
     start = ptr1;
-    pt1-> = &pt2;
+    pt1->next = &pt2;
     pt2->next = &pt3;
 
     ptr = start;
