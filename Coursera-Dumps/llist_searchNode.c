@@ -13,20 +13,26 @@ void printNumber(struct digit * start);
 struct digit * readNumber();
 void freeNumber(struct digit * start);
 struct digit * searchNumber(struct digit *, int);
+struct digit * insertAtFront(struct digit *, struct digit *);
+struct digit * reverseNumber(struct digit *);
 
 int main(void) {
 
-    struct digit *start, *ptr;
-    int searchNum = 5; //number to be searched
+    struct digit *start, *ptr, *reverse;
+    //int searchNum = 5; //number to be searched
     printf("Please enter a number: ");
     start = readNumber();
+    printf("Before number was reversed\n");
     printNumber(start);
-    ptr = searchNumber(start, searchNum);
+    /*ptr = searchNumber(start, searchNum);
     if(ptr != NULL) {
         printf("Found number %d at location %p. \n", searchNum, ptr);
     } else {
         printf("Number %d not found.\n", searchNum);
-    }
+    } */
+    printf("After number was reversed\n");
+    reverse = reverseNumber(start);
+    printNumber(reverse);
     freeNumber(start);
     
     return 0;
@@ -103,4 +109,26 @@ struct digit * searchNumber(struct digit * start, int searchNum) {
 
     return ptr;
     
+}
+
+struct digit * insertAtFront(struct digit * start, struct digit * newptr) {
+    newptr->next = start;
+    return newptr;
+}
+
+struct digit * reverseNumber(struct digit * start) {
+    struct digit *ptr = start;
+    struct digit *bstart = NULL;
+    struct digit *newdigit;
+
+    if (start != NULL) {
+        bstart = createDigit(start->num);
+        ptr = ptr->next;
+    }
+    while (ptr != NULL) {
+        newdigit = createDigit(ptr->num);
+        bstart = insertAtFront(bstart, newdigit);
+        ptr = ptr->next;
+    }
+    return bstart;
 }
