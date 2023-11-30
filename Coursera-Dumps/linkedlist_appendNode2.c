@@ -10,6 +10,7 @@ struct student {
 
 struct student *createStudent(char studentName[], int studentAge);
 struct student *append(struct student * end, struct student * newStudptr); 
+void freeStudents(struct student * start);
 void copyStr(char [], char []);
 
 /* add other prototypes here if needed */
@@ -29,14 +30,9 @@ int main(void) {
     printf("%s is %d years old.\n", start->name, start->age);
     printf("%s is %d years old.\n", start->next->name, start->next->age);
     printf("%s is %d years old.\n", start->next->next->name, start->next->next->age);
-
-    tmp = start->next;
-    free(start);
-    start = tmp;
-    tmp = start->next;
-    free(start);
-    free(tmp);
-
+    
+    freeStudents(start);
+    
     return 0;
 }
 
@@ -65,6 +61,18 @@ struct student * append(struct student * end, struct student * newStudentptr) {
     end = newStudentptr;
     
     return end;
+}
+
+void freeStudents(struct student * start) {
+    struct student * ptr, *temp;
+    ptr = start;
+    
+    while (ptr != NULL) {
+        temp = ptr->next;
+        free(ptr);
+        ptr = temp;
+        
+    }
 }
 
 void copyStr(char str1[], char str2[]){

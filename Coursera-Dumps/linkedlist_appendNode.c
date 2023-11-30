@@ -9,6 +9,7 @@ struct digit {
 struct digit * createDigit(int);
 struct digit * append(struct digit *, struct digit *);
 void printNumber(struct digit * start);
+void freeNumber(struct digit * start);
 int main(void) {
 
     struct digit *start, *newDigitptr, *end,  *temp;
@@ -23,12 +24,7 @@ int main(void) {
     newDigitptr = createDigit(third);
     end = append(end, newDigitptr);
     printNumber(start);
-    temp = start->next; //to retain access to the start of list before freeing so we dont lose our list.
-    free(start);
-    start = temp;
-    temp = start->next;
-    free(start);
-    free(temp);
+    freeNumber(start);
     
     return 0;
 }
@@ -59,4 +55,17 @@ void printNumber(struct digit * start) {
         ptr = ptr->next;
     }
     
+}
+
+void freeNumber(struct digit * start) {
+    struct digit * ptr, * temp;
+    ptr = start;
+    
+
+    while (ptr != NULL) {
+        temp = ptr->next;
+        free(ptr);
+        ptr = temp;
+        
+    }
 }

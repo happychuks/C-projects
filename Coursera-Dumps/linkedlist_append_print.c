@@ -101,15 +101,14 @@ void printStudents(struct student * start) {
     
 }
 
+//function to free allocated memory
 void freeStudents(struct student * start) {
-    struct student * ptr;
+    struct student * ptr, * temp;
     ptr = start;
-    struct student * temp;
 
     while (ptr != NULL) {
         temp = ptr->next;
         free(ptr);
         ptr = temp;
-        
     }
 }
