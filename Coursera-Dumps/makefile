@@ -7,5 +7,8 @@ program.o: program.c weatherstats.h
 weatherstats.o: weatherstats.c
 	gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c weatherstats.c -o weatherstats.o
 
+launch: program
+	./program
+	
 clean:
 	rm -f weatherstats.o program.o program
