@@ -11,4 +11,6 @@ int main(void) {
 	return 0;
 }
 
-//gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c program.c -o program.o
+/*
+gcc -std=c11 -Wall -fmax-errors=10 -Wextra -c program.c -o program.o
+*/
